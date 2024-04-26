@@ -1,0 +1,188 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2192c56ef2cd4241b00b9beeffdde886, type: 3}
+  m_Name: SelfQueue
+  m_EditorClassIdentifier: 
+  DefaultCards:
+  - <Prototype>k__BackingField: {fileID: 11400000, guid: d36f29ca9f94f624ab53582b59122404, type: 2}
+    OnShieldReduce:
+      m_PersistentCalls:
+        m_Calls: []
+    OnDeath:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRoundStart:
+      m_PersistentCalls:
+        m_Calls: []
+    IsEnemy: 0
+    MaxHealth:
+      value: 200
+    CurrentHealth:
+      value: 1
+    CurrentShield:
+      value: 39
+    Attack:
+      value: 10
+    Skill: {fileID: 11400000, guid: e2eec1211de90fb428584b05a4e413d7, type: 2}
+    Dead:
+      value: 0
+    ImmunityOneTime: 0
+    Inited: 1
+  - <Prototype>k__BackingField: {fileID: 11400000, guid: 04c67b0f894c9424cbc691d63c7a44ba, type: 2}
+    OnShieldReduce:
+      m_PersistentCalls:
+        m_Calls: []
+    OnDeath:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRoundStart:
+      m_PersistentCalls:
+        m_Calls: []
+    IsEnemy: 0
+    MaxHealth:
+      value: 200
+    CurrentHealth:
+      value: 40
+    CurrentShield:
+      value: 0
+    Attack:
+      value: 10
+    Skill: {fileID: 11400000, guid: 90baf8a26a568484bb6f96fff42157b8, type: 2}
+    Dead:
+      value: 0
+    ImmunityOneTime: 0
+    Inited: 1
+  - <Prototype>k__BackingField: {fileID: 11400000, guid: b003054ea5d3a8f4c9d6866aa9d777f6, type: 2}
+    OnShieldReduce:
+      m_PersistentCalls:
+        m_Calls: []
+    OnDeath:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRoundStart:
+      m_PersistentCalls:
+        m_Calls: []
+    IsEnemy: 0
+    MaxHealth:
+      value: 200
+    CurrentHealth:
+      value: 40
+    CurrentShield:
+      value: 0
+    Attack:
+      value: 10
+    Skill: {fileID: 11400000, guid: 3b40c4527bc41c44b83fdd9ae61c8e11, type: 2}
+    Dead:
+      value: 0
+    ImmunityOneTime: 1
+    Inited: 1
+  - <Prototype>k__BackingField: {fileID: 11400000, guid: 698e70c8a9b753c429454857729827b7, type: 2}
+    OnShieldReduce:
+      m_PersistentCalls:
+        m_Calls: []
+    OnDeath:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRoundStart:
+      m_PersistentCalls:
+        m_Calls: []
+    IsEnemy: 0
+    MaxHealth:
+      value: 200
+    CurrentHealth:
+      value: 40
+    CurrentShield:
+      value: 0
+    Attack:
+      value: 10
+    Skill: {fileID: 11400000, guid: 453ddbce74285b24d8f867537897378d, type: 2}
+    Dead:
+      value: 0
+    ImmunityOneTime: 0
+    Inited: 1
+  - <Prototype>k__BackingField: {fileID: 11400000, guid: 698e70c8a9b753c429454857729827b7, type: 2}
+    OnShieldReduce:
+      m_PersistentCalls:
+        m_Calls: []
+    OnDeath:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRoundStart:
+      m_PersistentCalls:
+        m_Calls: []
+    IsEnemy: 0
+    MaxHealth:
+      value: 200
+    CurrentHealth:
+      value: 40
+    CurrentShield:
+      value: 0
+    Attack:
+      value: 10
+    Skill: {fileID: 11400000, guid: 453ddbce74285b24d8f867537897378d, type: 2}
+    Dead:
+      value: 0
+    ImmunityOneTime: 0
+    Inited: 1
+  DefaultSubstitute:
+  - <Prototype>k__BackingField: {fileID: 11400000, guid: ec6d854b02b2bb645b0f18d76f565ae1, type: 2}
+    OnShieldReduce:
+      m_PersistentCalls:
+        m_Calls: []
+    OnDeath:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRoundStart:
+      m_PersistentCalls:
+        m_Calls: []
+    IsEnemy: 0
+    MaxHealth:
+      value: 200
+    CurrentHealth:
+      value: 200
+    CurrentShield:
+      value: 0
+    Attack:
+      value: 10
+    Skill: {fileID: 11400000, guid: 90baf8a26a568484bb6f96fff42157b8, type: 2}
+    Dead:
+      value: 0
+    ImmunityOneTime: 0
+    Inited: 0
+  - <Prototype>k__BackingField: {fileID: 11400000, guid: bbafa1ff8720c474faf2dcc8eff38054, type: 2}
+    OnShieldReduce:
+      m_PersistentCalls:
+        m_Calls: []
+    OnDeath:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRoundStart:
+      m_PersistentCalls:
+        m_Calls: []
+    IsEnemy: 0
+    MaxHealth:
+      value: 200
+    CurrentHealth:
+      value: 200
+    CurrentShield:
+      value: 0
+    Attack:
+      value: 10
+    Skill: {fileID: 11400000, guid: e2eec1211de90fb428584b05a4e413d7, type: 2}
+    Dead:
+      value: 0
+    ImmunityOneTime: 0
+    Inited: 0
+  DefaultProps:
+  - {fileID: 11400000, guid: 82264600285e62447a0f7d6b3ec78579, type: 2}
+  - {fileID: 11400000, guid: f5c50da5aa66d5d47b414d6cbe81b023, type: 2}
+  - {fileID: 11400000, guid: ecd5616cc6212544bbcc1d628b20c531, type: 2}
