@@ -23,6 +23,10 @@ namespace Script {
                     foreach (var modelFieldCard in GetComponentInParent<PreparePlayerPrepareCardQueuePresenter>().Model.FieldCards) {
                         modelFieldCard.CurrentShield.Value = Mathf.RoundToInt(modelFieldCard.MaxHealth.Value * 0.15f);
                     }
+                    
+                    foreach (var modelFieldCard in GetComponentInParent<PreparePlayerPrepareCardQueuePresenter>().Model.SubstituteCards) {
+                        modelFieldCard.CurrentShield.Value = Mathf.RoundToInt(modelFieldCard.MaxHealth.Value * 0.15f);
+                    }
                     break;
             }
         }

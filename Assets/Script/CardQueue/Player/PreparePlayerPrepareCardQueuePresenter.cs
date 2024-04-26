@@ -52,6 +52,25 @@ namespace Script.Player {
             PrepareBattleManager.Instance.OnPropSelected.AsObservable().Subscribe(IfNegativeEnable).AddTo(this);
             PrepareBattleManager.Instance.OnPropDeslected.AsObservable().Subscribe(IfNegativeDisable).AddTo(this);
 
+            PrepareBattleManager.Instance.OnPropDeslected.AsObservable().Subscribe((x) => {
+                foreach (var cardInfoGroup in this.m_FieldCardCompounds) {
+                    cardInfoGroup.CardPresenter.GetComponent<ItemDrag>().Enable();
+                }
+
+                foreach (var cardInfoGroup in this.m_SubstituteCardCompounds) {
+                    cardInfoGroup.CardPresenter.GetComponent<ItemDrag>().Enable();
+                }
+            }).AddTo(this);
+            
+            PrepareBattleManager.Instance.OnPropSelected.AsObservable().Subscribe((x) => {
+                foreach (var cardInfoGroup in this.m_FieldCardCompounds) {
+                    cardInfoGroup.CardPresenter.GetComponent<ItemDrag>().Disable();
+                }
+
+                foreach (var cardInfoGroup in this.m_SubstituteCardCompounds) {
+                    cardInfoGroup.CardPresenter.GetComponent<ItemDrag>().Disable();
+                }
+            }).AddTo(this);
         }
         
         private void IfNegativeDisable(PropPresenter prop) {
@@ -62,12 +81,17 @@ namespace Script.Player {
             foreach (var cardInfoGroup in this.m_FieldCardCompounds) {
                 cardInfoGroup.CardPresenter.GetComponent<CardColorMask>().PointerExit();
             }
+            foreach (var cardInfoGroup in this.m_SubstituteCardCompounds) {
+                cardInfoGroup.CardPresenter.GetComponent<CardColorMask>().PointerExit();
+            }
         }
         private void IfNegativeEnable(PropPresenter prop) {
             if (prop.Model.IsPositive) {
                 return;
             }
-
+            foreach (var cardInfoGroup in this.m_SubstituteCardCompounds) {
+                cardInfoGroup.CardPresenter.GetComponent<CardColorMask>().PointerEnter();
+            }
             foreach (var cardInfoGroup in this.m_FieldCardCompounds) {
                 cardInfoGroup.CardPresenter.GetComponent<CardColorMask>().PointerEnter();
             }
@@ -81,6 +105,9 @@ namespace Script.Player {
             foreach (var cardInfoGroup in this.m_FieldCardCompounds) {
                 cardInfoGroup.CardPresenter.GetComponent<CardOutline>().PointerExit();
             }
+            foreach (var cardInfoGroup in this.m_SubstituteCardCompounds) {
+                cardInfoGroup.CardPresenter.GetComponent<CardOutline>().PointerExit();
+            }
         }
         private void IfPositiveEnable(PropPresenter prop) {
             if (!prop.Model.IsPositive) {
@@ -88,6 +115,9 @@ namespace Script.Player {
             }
 
             foreach (var cardInfoGroup in this.m_FieldCardCompounds) {
+                cardInfoGroup.CardPresenter.GetComponent<CardOutline>().PointerEnter();
+            }
+            foreach (var cardInfoGroup in this.m_SubstituteCardCompounds) {
                 cardInfoGroup.CardPresenter.GetComponent<CardOutline>().PointerEnter();
             }
         }

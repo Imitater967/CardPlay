@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: New Health Steal Skill
   m_EditorClassIdentifier: 
   Icon: {fileID: -1156626125, guid: b2713bbf286ea3b4d8cf4478d348ee16, type: 3}
-  Description: "\u751F\u547D\u5077\u53D6\u6280\u80FD,\u8FDB\u653B\u5FC5\u5907"
+  Description: "\u653B\u51FB\u540E\u6062\u590D\u9020\u6210\u4F24\u5BB3\u768425%\u7684\u751F\u547D\u503C\uFF0C\u5E76\u5077\u53D6\u76EE\u680710\u70B9\u653B\u51FB\u529B"
   <AtkSteal>k__BackingField: 10
   <HealthStealPercent>k__BackingField: 0.25

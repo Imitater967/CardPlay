@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: New Introspection Skill
   m_EditorClassIdentifier: 
   Icon: {fileID: -26826005, guid: b2713bbf286ea3b4d8cf4478d348ee16, type: 3}
-  Description: "\u81EA\u7701\u6280\u80FD,\u611F\u89C9\u8FD8\u4E0D\u9519"
+  Description: "\u56DE\u5408\u5F00\u59CB\u65F6\uFF0C\u5BF9\u81EA\u5DF1\u9020\u6210\u6700\u5927\u751F\u547D\u503C35%\u7684\u4F24\u5BB3\uFF0C\u5E76\u8F6C\u5316\u4E3A\u7B49\u91CF\u7684\u62A4\u76FE\u3002\u62A4\u76FE\u5B58\u5728\u65F6\uFF0C\u83B7\u5F9715%\u51CF\u4F24"
   <SelfDamagePercent>k__BackingField: 0.35
   <DamageReducePercent>k__BackingField: 0.15

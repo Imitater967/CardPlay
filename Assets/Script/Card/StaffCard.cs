@@ -26,7 +26,6 @@ namespace Script {
         public void Initialize() {
             this.Attack.Value = Prototype.Attack;
             this.CurrentHealth.Value = this.MaxHealth.Value = Prototype.Health;
-            this.CurrentHealth.Value = 40;
             this.CurrentShield.Value = 0;
             Dead.Value = false;
             this.Buffers.Clear();

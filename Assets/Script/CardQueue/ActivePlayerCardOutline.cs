@@ -6,6 +6,9 @@ namespace Script {
     public class ActivePlayerCardOutline : MonoBehaviour, IDragHandler , IEndDragHandler{
         private GameObject m_LastObject;
         public void OnDrag(PointerEventData eventData) {
+            if (!GetComponent<ItemDrag>().enabled) {
+                return;
+            }
             if (eventData.pointerCurrentRaycast.gameObject != m_LastObject) {
                 if (m_LastObject != null && m_LastObject.CompareTag("PlayerCard")) {
                     m_LastObject.GetComponent<CardOutline>().PointerExit();
@@ -19,6 +22,9 @@ namespace Script {
         }
 
         public void OnEndDrag(PointerEventData eventData) {
+            if (!GetComponent<ItemDrag>().enabled) {
+                return;
+            }
             if (m_LastObject != null && m_LastObject.CompareTag("PlayerCard")) {
                 m_LastObject.GetComponent<CardOutline>().PointerExit();
             }

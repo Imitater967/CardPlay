@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: New Shield Skill
   m_EditorClassIdentifier: 
   Icon: {fileID: 1821689698, guid: d529f63f32c1a2b438dc3ffcf58f7a73, type: 3}
-  Description: "\u62A4\u76FE\u6280\u80FD,\u8D85\u7EA7\u5389\u5BB3\u54DF"
+  Description: "\u6BCF2\u56DE\u5408\uFF0C\u514D\u75AB\u4E00\u6B21\u653B\u51FB\uFF0C\u6548\u679C\u6D88\u5931\u540E\uFF0C\u83B7\u5F97\u603B\u751F\u547D\u503C50%\u7684\u62A4\u76FE\uFF0C\u62A4\u76FE\u6D88\u5931\u540E\uFF0C\u6062\u590D\u62A4\u76FE\u503C\u603B\u91CF\u7684\u751F\u547D\uFF0C\u7531\u6211\u65B9\u89D2\u8272\u5747\u644A"
   <RoundToActive>k__BackingField: 2
   <ShieldAmountPercent>k__BackingField: 0.5

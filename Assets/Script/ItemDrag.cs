@@ -26,6 +26,9 @@ namespace Script {
         /// </summary>
         /// <param name="eventData"></param>
         public void OnBeginDrag(PointerEventData eventData) {
+            if (!enabled) {
+                return;
+            }
             m_OriginParent = transform.parent;
             transform.SetParent(m_DragParent);
             m_CanvasGroup.blocksRaycasts = false;
@@ -36,6 +39,9 @@ namespace Script {
         /// </summary>
         /// <param name="eventData"></param>
         public void OnDrag(PointerEventData eventData) {
+            if (!enabled) {
+                return;
+            }
             m_RectTransform.position = eventData.position;
         }
 
@@ -44,11 +50,22 @@ namespace Script {
         /// </summary>
         /// <param name="eventData"></param>
         public void OnEndDrag(PointerEventData eventData) {
+            if (!enabled) {
+                return;
+            }
             m_CanvasGroup.blocksRaycasts = true;
             m_RectTransform.SetParent(m_OriginParent);
             //由HorizontalLayout
             m_RectTransform.anchoredPosition = Vector2.zero;
             Debug.Log("EndDrag");
+        }
+
+        public void Enable() {
+            enabled = true;
+        }
+
+        public void Disable() {
+            enabled = false;
         }
     }
 }

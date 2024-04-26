@@ -6,6 +6,9 @@ namespace Script.Player {
     public class PlayerStaffCardPresenter : StaffCardPresenter ,IEndDragHandler{
         [FormerlySerializedAs("IsSubtitute")] public bool IsSubstitute;
         public void OnEndDrag(PointerEventData eventData) {
+            if (!GetComponent<ItemDrag>().enabled) {
+                return;
+            }
             var currentObject = eventData.pointerCurrentRaycast.gameObject;
             if (currentObject!=null && currentObject.TryGetComponent(out PlayerStaffCardPresenter presenter)) {
                 EventManager.Instance.PlayerSwitchCardPosition.Invoke(presenter,this);

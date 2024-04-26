@@ -1,18 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Script.Enemy;
 using Script.Player;
 using UniRx;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
-using Task = System.Threading.Tasks.Task;
 
 namespace Script.Combat {
     public class CombatManager : MonoBehaviour {
@@ -193,7 +189,7 @@ namespace Script.Combat {
             await card.transform.DOMove(enemy.GetComponent<AttackAnchor>().AnchorTransform.position,1)
                 .SetEase(Ease.InFlash).ToUniTask();
 
-            ProcessDamage(card.Model, enemy.Model);
+            ProcessDamageWithSkill(card.Model, enemy.Model);
             ProcessDamage(enemy.Model,card.Model);
             var selfShake = card.transform.DOShakePosition(1, 10).ToUniTask();
             var enemyShake = enemy.transform.DOShakePosition(1, 10).ToUniTask();
@@ -202,8 +198,7 @@ namespace Script.Combat {
             card.GetComponent<Canvas>().sortingOrder -= 10;
         }
 
-        private void ProcessDamage(StaffCard cardModel, StaffCard enemyModel) {
-            //计算伤害
+        private void ProcessDamageWithSkill(StaffCard cardModel, StaffCard enemyModel) {
             var damageRemain = enemyModel.Attack.Value;
             cardModel.ReceiveDamage(damageRemain);
             
@@ -216,6 +211,14 @@ namespace Script.Combat {
                 enemyModel.Attack.Value = Mathf.Max(0, enemyModel.Attack.Value);
             }
 
+          
+            enemyModel.TryMarkDeath(cardModel);
+        }
+
+        private void ProcessDamage(StaffCard cardModel, StaffCard enemyModel) {
+            //计算伤害
+            var damageRemain = enemyModel.Attack.Value;
+            cardModel.ReceiveDamage(damageRemain);
           
             enemyModel.TryMarkDeath(cardModel);
         }

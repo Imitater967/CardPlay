@@ -81,6 +81,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Model>k__BackingField:
     <Prototype>k__BackingField: {fileID: 0}
+    OnShieldReduce:
+      m_PersistentCalls:
+        m_Calls: []
+    OnDeath:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRoundStart:
+      m_PersistentCalls:
+        m_Calls: []
+    IsEnemy: 0
     MaxHealth:
       value: 0
     CurrentHealth:
@@ -90,6 +100,9 @@ MonoBehaviour:
     Attack:
       value: 0
     Skill: {fileID: 0}
+    Dead:
+      value: 0
+    ImmunityOneTime: 0
     Inited: 0
   <View>k__BackingField:
     Atk: {fileID: 2913744845562019483}
@@ -266,7 +279,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 37.886}
+  m_SizeDelta: {x: 300.6768, y: 37.886}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2913744845207558098
 CanvasRenderer:
@@ -401,7 +414,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 37.886}
+  m_SizeDelta: {x: 162.9489, y: 37.886}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2913744845562019482
 CanvasRenderer:
