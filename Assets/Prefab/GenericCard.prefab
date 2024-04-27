@@ -1287,6 +1287,7 @@ GameObject:
   - component: {fileID: 7988464506381385615}
   - component: {fileID: 2378249345248387580}
   - component: {fileID: 8585011701770952627}
+  - component: {fileID: 5666468526588726656}
   m_Layer: 5
   m_Name: GenericCard
   m_TagString: EnemyCard
@@ -1370,6 +1371,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Model>k__BackingField:
     <Prototype>k__BackingField: {fileID: 0}
+    OnShieldReduce:
+      m_PersistentCalls:
+        m_Calls: []
+    OnDeath:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRoundStart:
+      m_PersistentCalls:
+        m_Calls: []
+    IsEnemy: 0
     MaxHealth:
       value: 0
     CurrentHealth:
@@ -1379,6 +1390,9 @@ MonoBehaviour:
     Attack:
       value: 0
     Skill: {fileID: 0}
+    Dead:
+      value: 0
+    ImmunityOneTime: 0
     Inited: 0
   <View>k__BackingField:
     HealthBar: {fileID: 4403920277805530553}
@@ -1451,6 +1465,23 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 10
   m_TargetDisplay: 0
+--- !u!114 &5666468526588726656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4403920277362795016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &4403920277738600082
 GameObject:
   m_ObjectHideFlags: 0

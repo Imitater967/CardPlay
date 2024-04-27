@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Script.Combat;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Events;
@@ -26,6 +28,7 @@ namespace Script {
         public void Initialize() {
             this.Attack.Value = Prototype.Attack;
             this.CurrentHealth.Value = this.MaxHealth.Value = Prototype.Health;
+            this.CurrentHealth.Value = Mathf.RoundToInt(this.MaxHealth.Value * 0.8f);
             this.CurrentShield.Value = 0;
             Dead.Value = false;
             this.Buffers.Clear();
@@ -49,7 +52,7 @@ namespace Script {
             OnDeath?.Invoke(presenter,this);
         }
 
-        public void ReceiveDamage(int atk) {
+        public void ReceiveDamage(StaffCard attacker,int atk) {
             int damageRemain = atk;
             if (Skill is IntrospectionSkill introspectionSkill&& CurrentShield.Value > 0) {
                 damageRemain = Mathf.RoundToInt(damageRemain * (1 - introspectionSkill.DamageReducePercent));
@@ -57,7 +60,13 @@ namespace Script {
 
             if (ImmunityOneTime) {
                 if (Skill is ShieldSkill skill) {
-                    this.CurrentHealth.Value += Mathf.RoundToInt(skill.ShieldAmountPercent * this.MaxHealth.Value);
+                    int health = Mathf.RoundToInt(skill.ShieldAmountPercent * this.MaxHealth.Value);
+                    var list = IsEnemy ? CombatManager.Instance.Enemies.Presenters : CombatManager.Instance.Alies.Presenters;
+                    var staffCards = list.Where(x=>!x.Model.Dead.Value).Select(x=>x.Model).ToArray();
+                    health = health / staffCards.Length;
+                    foreach (var staffCard in staffCards) {
+                        staffCard.AddHealth(health);
+                    }
                 }
                 ImmunityOneTime = false;
                 return;
@@ -73,6 +82,7 @@ namespace Script {
             CurrentShield.Value -= shieldDecrease;
             OnShieldReduce?.Invoke(this,shieldDecrease);
             CurrentHealth.Value -= damageRemain;
+            TryMarkDeath(attacker);
         }
 
         public void MarkImmunityOneTime() {
@@ -80,6 +90,9 @@ namespace Script {
         }
 
         public void AddHealth(int recover) {
+            if (Dead.Value) {
+                return;
+            }
             int newHealth = CurrentHealth.Value + recover;
             CurrentHealth.Value = Mathf.Min(MaxHealth.Value, newHealth);
         }

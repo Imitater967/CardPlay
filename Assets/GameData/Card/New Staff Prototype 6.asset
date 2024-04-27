@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a62ea27f5df63a446867da01f715ca4e, type: 3}
   m_Name: New Staff Prototype 6
   m_EditorClassIdentifier: 
-  Health: 10000
-  Attack: 500
+  Health: 500
+  Attack: 80
   CardImage: {fileID: -644079835, guid: d529f63f32c1a2b438dc3ffcf58f7a73, type: 3}
   Name: "\u66FF\u8865A"

@@ -22,6 +22,13 @@ namespace Script.Combat {
         public List<StaffCardPresenter> Second;
         public bool IsPlayerFirst;
         public int CurrentRound = 0;
+        public static CombatManager Instance=>m_Instance;
+        private static CombatManager m_Instance;
+
+        private void Awake() {
+            m_Instance = this;
+        }
+
         private void Start() {
             StartGame();
         }
@@ -72,7 +79,7 @@ namespace Script.Combat {
             if (arg0.Skill is ShieldSkill skill) {
                 if (arg0.IsEnemy) {
                     var staffCard = Enemies.Presenters.Where(x=>!x.Model.Dead.Value).ToArray();
-                    int recover = arg1 / staffCard.Length;
+                    int recover = arg1 / Math.Min(1,staffCard.Length);
                     foreach (var staffCardPresenter in staffCard) {
                         staffCardPresenter.Model.AddHealth(recover);
                     }
@@ -88,7 +95,7 @@ namespace Script.Combat {
                         Debug.Log("执行牺牲针对玩家");
                         foreach (var staffCardPresenter in this.Alies.Presenters) {
                             //死亡时候对所有敌人造成攻击
-                            staffCardPresenter.Model.CurrentHealth.Value -= self.Attack.Value;
+                            staffCardPresenter.Model.ReceiveDamage(self,self.Attack.Value);
                             if (staffCardPresenter.Model.TryMarkDeath(self)) {
                                 //如果有死亡,那么就额外触发
                                 i -= 1;
@@ -103,7 +110,7 @@ namespace Script.Combat {
                         Debug.Log("执行牺牲针对敌人");
                         foreach (var staffCardPresenter in this.Enemies.Presenters) {
                             //死亡时候对所有敌人造成攻击
-                            staffCardPresenter.Model.CurrentHealth.Value -= self.Attack.Value;
+                            staffCardPresenter.Model.ReceiveDamage(self,self.Attack.Value);
                             if (staffCardPresenter.Model.TryMarkDeath(self)) {
                                 //如果有死亡,那么就额外触发
                                 i -= 1;
@@ -200,7 +207,7 @@ namespace Script.Combat {
 
         private void ProcessDamageWithSkill(StaffCard cardModel, StaffCard enemyModel) {
             var damageRemain = enemyModel.Attack.Value;
-            cardModel.ReceiveDamage(damageRemain);
+            cardModel.ReceiveDamage(enemyModel,damageRemain);
             
             if (cardModel.Skill is HealthStealSkill healthSteal) {
                 cardModel.CurrentHealth.Value +=
@@ -212,15 +219,13 @@ namespace Script.Combat {
             }
 
           
-            enemyModel.TryMarkDeath(cardModel);
         }
 
         private void ProcessDamage(StaffCard cardModel, StaffCard enemyModel) {
             //计算伤害
             var damageRemain = enemyModel.Attack.Value;
-            cardModel.ReceiveDamage(damageRemain);
+            cardModel.ReceiveDamage(enemyModel,damageRemain);
           
-            enemyModel.TryMarkDeath(cardModel);
         }
 
         public StaffCardPresenter GetEnemy(bool isEnemy) {

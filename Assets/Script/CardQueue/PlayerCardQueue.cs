@@ -29,12 +29,15 @@ namespace Script {
             Props.Clear();
             
             for (var i = 0; i < DefaultSubstitute.Count; i++) {
+                DefaultSubstitute[i].Inited = false;
                 SubstituteCards.Add(DefaultSubstitute[i]);
+                DefaultSubstitute[i].Initialize();
             }
             
             for (var i = 0; i < DefaultProps.Count; i++) {
                 Props.Add(DefaultProps[i]);
             }
+
         }
     }
 }

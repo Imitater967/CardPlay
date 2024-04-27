@@ -60,8 +60,12 @@ namespace Script {
             model.CurrentHealth.Subscribe(x => {
                 View.HealthBar.value = x;
                 View.HealthText.text = $"{x}/{model.MaxHealth.Value}";
-            });
-
+            }).AddTo(this);
+            model.Dead.Subscribe(x => {
+                if (x) {
+                    GetComponent<CardColorMask>().PointerEnter();
+                }
+            }).AddTo(this);
 
         }
 
@@ -75,6 +79,7 @@ namespace Script {
             }
             if (prop != null) {
                 GetComponent<StaffCardPropConsumer>().Consume(prop.Model);
+                Destroy(PrepareBattleManager.Instance.CurrentSelectedProp.gameObject);
             }
 
             PrepareBattleManager.Instance.CurrentSelectedProp = null;
